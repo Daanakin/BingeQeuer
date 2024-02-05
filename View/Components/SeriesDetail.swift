@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct SeriesDetail: View {
+    var series: Series
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        let spacerSize : CGFloat = 0
+        ScrollView {
+            VStack{
+                CircleImage(image: Image(series.image))
+                    .offset(y: -spacerSize)
+                    .padding(.bottom, -spacerSize)
+                Text(series.title)
+                Text(series.description)
+            }
+        }
+        .navigationTitle(series.title)
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    SeriesDetail()
+    SeriesDetail(series: seriesSourceList[4])
 }

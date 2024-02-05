@@ -8,9 +8,16 @@
 import SwiftUI
 
 struct SeriesList: View {
+    
+    @State var seriesDetailList = seriesSourceList
+    
     var body: some View {
-        List(seriesSourceList) { series in
-            BingeRow(series: series)
+        NavigationView {
+                List(seriesDetailList, id:\.self) { series in
+                    NavigationLink(destination: BingeRow(series: series)){
+                        BingeRow(series: series)
+                    }
+                }
         }
     }
 }
